@@ -1,0 +1,28 @@
+version: '3.8'
+
+services:
+  argocd-server:
+    image: argoproj/argocd:latest
+    ports:
+      - "8080:8080"
+    volumes:
+      - argocd-data:/data
+
+  argocd-repo-server:
+    image: argoproj/argocd-repo-server:latest
+    volumes:
+      - argocd-data:/data
+
+  argocd-dex-server:
+    image: argoproj/argocd-dex-server:latest
+    volumes:
+      - argocd-data:/data
+
+  argocd-redis:
+    image: redis:latest
+    volumes:
+      - argocd-data:/data
+
+volumes:
+  argocd-data:
+
